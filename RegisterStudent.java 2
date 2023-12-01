@@ -1,0 +1,151 @@
+package myproject;
+
+
+import java.util.Scanner;
+
+public class RegisterStudent {
+	//THE MAIN METHOD
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        String[] sweCourses = {"dsa", "java", "networking", "computer organization", "python"};
+        int[] sweCreditHours = {3, 4, 3, 3, 3};
+        String[] csCourses = {"Data communication", "linear algebra", "data science", "database", "c++"};
+        int[] csCreditHour = {4, 4, 3, 3, 3};
+        String[] itCourses = {"web development", "maintenance", "data science", "database", "c++"};
+        int[] itCreditHour = {4, 4, 3, 3, 3};
+        //ACCEPT NAME AND VALIDATE
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        while (name.matches(".*\\d.*")) { 
+            System.out.println("Invalid input. Please enter your name again:");
+            name = scanner.nextLine();
+        }
+        //ACCEPT ID AND VALIDATE
+        System.out.print("Enter your student ID: ");
+        
+        int studentID = 0;
+        boolean validstudentID = false;
+        while (!validstudentID) {
+            try {
+            	studentID = Integer.parseInt(scanner.nextLine());
+                validstudentID = true;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter your id again:");
+            }
+        }
+        //ACCEPT COLLEGENAME AND VALIDATE
+        System.out.print("Enter your College name: ");
+        String CollegeName = scanner.nextLine();
+        while (CollegeName.matches(".*\\d.*")) { 
+            System.out.println("Invalid input. Please enter your name again:");
+            CollegeName = scanner.nextLine();
+        }
+        //ACCEPT YEAR AND VALIDATE
+        System.out.print("Enter your year: ");
+        
+        int year = 0;
+        boolean validyear = false;
+        while (!validyear) {
+            try {
+                year = Integer.parseInt(scanner.nextLine());
+                if (year >= 1 && year <= 5) {
+                    validyear = true;
+                } else {
+                    System.out.println("Invalid input.year should be between 1 and 5. Please enter year again:");
+                }
+            } 
+            catch (NumberFormatException e) {
+                System.out.println("Invalid input. year should be an integer. Please enter year again:");
+            }
+        }
+        //CREATING STUDENT OBJECT
+        EStudent student = new EStudent(name,studentID,CollegeName,year);
+        do {
+            System.out.println("Choose department:");
+            System.out.println("1. Software Engineering");
+            System.out.println("2. Computer Science");
+            System.out.println("3. Information Systems");
+            System.out.println("4. Exit");
+            choice = scanner.nextInt();
+            //THIS IS THE SWITCH STATEMENT
+            switch (choice) {
+            //CASE 1 FOR SWE DEPARTMENT
+                case 1:
+                    System.out.println("Course\t\tCredit Hours");
+                    System.out.println("------------------------");
+                    System.out.println("Name : " +student.getName() );
+                    System.out.println("ID : " +student.getStudentID() );
+                    System.out.println("College " +student.getCollegeName() );
+                    System.out.println("Year : " +student.getYear() );
+                    System.out.println("Course\t\tCredit Hours");
+                    System.out.println("Course\t\tCredit Hours");
+                    for (int i = 0; i < sweCourses.length; i++) {
+                        System.out.printf("%-20s %d%n", sweCourses[i], sweCreditHours[i]);
+                    }
+
+                    System.out.println("Register for the semester or exit? (R/E)");
+                    Scanner sweScanner = new Scanner(System.in);
+                    String choice1 = sweScanner.nextLine();
+                    if (choice1.equalsIgnoreCase("R"))
+                        System.out.println("Registered!");
+                    else if (choice1.equalsIgnoreCase("E"))
+                        System.exit(0);
+                    else
+                        System.out.println("Invalid input.");
+                    break;
+                    //CASE 2 FOR CS DEPARTMENT
+                case 2:
+                    System.out.println("Course\t\tCredit Hours");
+                    System.out.println("------------------------");
+                    System.out.println("Name : " +student.getName() );
+                    System.out.println("ID : " +student.getStudentID() );
+                    System.out.println("College " +student.getCollegeName() );
+                    System.out.println("Year : " +student.getYear() );
+                    for (int i = 0; i < csCourses.length; i++) {
+                        System.out.printf("%-20s %d%n", csCourses[i], csCreditHour[i]);
+                    }
+
+                    System.out.println("Register for the semester or exit? (R/E)");
+                    Scanner csScanner = new Scanner(System.in);
+                    String choice2 = csScanner.nextLine();
+                    if (choice2.equalsIgnoreCase("R"))
+                        System.out.println("Registered!");
+                    else if (choice2.equalsIgnoreCase("E"))
+                        System.exit(0);
+                    else
+                        System.out.println("Invalid input.");
+                    break;
+                    //CASE 3 FOR IS DEPARTMENT
+                case 3:
+                    System.out.println("Course\t\tCredit Hours");
+                    System.out.println("------------------------");
+                    System.out.println("Name : " +student.getName() );
+                    System.out.println("ID : " +student.getStudentID() );
+                    System.out.println("College " +student.getCollegeName() );
+                    System.out.println("Year : " +student.getYear() );
+                    for (int i = 0; i < itCourses.length; i++) {
+                        System.out.printf("%-20s %d%n", itCourses[i], itCreditHour[i]);
+                    }
+
+                    System.out.println("Register for the semester or exit? (R/E)");
+                    Scanner itScanner = new Scanner(System.in);
+                    String choice3 = itScanner.nextLine();
+                    if (choice3.equalsIgnoreCase("R"))
+                        System.out.println("Registered!");
+                    else if (choice3.equalsIgnoreCase("E"))
+                        System.exit(0);
+                    else
+                        System.out.println("Invalid input.");
+                    break;
+                    //EXIITING BLOCK
+                case 4:
+                    System.out.println("Exiting.......");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        } while (choice != 4);
+    }
+}

@@ -1,0 +1,55 @@
+package myproject;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class EStudent {
+    private String name;
+    private int studentID;
+    private String CollegeName;
+    private int year;
+    //THE CONSTRUCTOR EStudent
+    public EStudent(String name, int studentID, String CollegeName, int year) {
+        this.name = name;
+        this.studentID = studentID;
+        this.CollegeName = CollegeName;
+        this.year = year;
+    }
+    //THESE ARE THE GETTER AND SETTER METHODS
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getCollegeName() {
+        return CollegeName;
+    }
+
+    public void setDepartmentName(String CollegeName) {
+        this.CollegeName = CollegeName;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+}
+
+	
+	
+
